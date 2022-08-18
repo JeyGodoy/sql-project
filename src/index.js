@@ -26,18 +26,22 @@ const createTableUser = async () => {
   db.run(sql, callback);
 };
 
+function insertUser() {
+  const name = faker.name.fullName();
+  const email = faker.internet.email();
+
+  const sql = `INSERT INTO users (name, email) VALUES (?, ?);`;
+  const values = [name, email];
+
+  db.run(sql, values, callback);
+}
+
 async function main() {
   await createTableUser();
 
-  for (let i = 0; i < 100; i++) {
-    const name = faker.name.fullName();
-    const email = faker.internet.email().toLowerCase();
-
-    const sql = `
-      INSERT INTO users (name, email) VALUES ('${name}', '${email}');
-      `;
-    db.run(sql, callback);
-  }
+  // for (let i = 0; i < 100; i++) {
+  //   insertUser()
+  // }
 
   db.close();
 }

@@ -1,10 +1,7 @@
 const { faker } = require("@faker-js/faker");
 
-const {
-  createTableUser,
-  insertUser,
-  closeDb,
-} = require("./repositories/user-sqlite-repository");
+const { insertUser } = require("./repositories/sqlite/user-sqlite-repository");
+const { createTableUser } = require("./repositories/sqlite/infra");
 
 async function main() {
   // for (let i = 0; i < 100; i++) {
@@ -21,8 +18,6 @@ async function main() {
     faker.datatype.number(18, 60),
     faker.commerce.price(1000, 2000)
   );
-
-  closeDb();
 }
 
 main();

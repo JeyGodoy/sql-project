@@ -1,7 +1,10 @@
 const { faker } = require("@faker-js/faker");
 
-const { insertUser } = require("./repositories/sqlite/user-sqlite-repository");
-const { createTableUser } = require("./repositories/sqlite/infra");
+const { insertUser } = require("./repositories/pg/user-pg-repository");
+const { createTableUser } = require("./repositories/pg/infra");
+
+// const { insertUser } = require("./repositories/sqlite/user-sqlite-repository");
+// const { createTableUser } = require("./repositories/sqlite/infra");
 
 async function main() {
   // for (let i = 0; i < 100; i++) {
